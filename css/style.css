@@ -21,14 +21,14 @@ body {
     border: 1px solid;
     background-color: #660000c2;
     padding: 20px;
-
+    border-radius: 10px;
+    margin-top: 10px;
 }
 
 .textSize {
     font-size: 25px;
     line-height: 15px;
     color: aliceblue;
-
 }
 
 @media (max-width: 768px) {
