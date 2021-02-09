@@ -1,0 +1,38 @@
+body {
+    background-image: url(../image/image.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+#searchBtn {
+    background-color: #500001;
+}
+
+#countryInput {
+    background-color: #5f0002c5;
+    color: white;
+}
+
+.search-box-position {
+    margin-top: 50px;
+}
+
+.covidDetails {
+    border: 1px solid;
+    background-color: #660000c2;
+    padding: 20px;
+
+}
+
+.textSize {
+    font-size: 25px;
+    line-height: 15px;
+    color: aliceblue;
+
+}
+
+@media (max-width: 768px) {
+    body {
+        background-image: url(../image/image-small.jpg);
+    }
+}
