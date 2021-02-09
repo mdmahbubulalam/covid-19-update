@@ -1,14 +1,16 @@
 const searchCountry = country => {
     const countryInput = document.getElementById('countryInput').value;
     const countryName = countryInput.charAt(0).toUpperCase() + countryInput.slice(1);
-    console.log(countryName);
     const url = `https://covid-api.mmediagroup.fr/v1/cases?country=${countryName}`;
     fetch(url)
         .then(res => res.json())
         .then(data => displayCovidStatus(data.All))
+        .catch(error => errorText('Please enter a valid country name'))
 }
 
 const displayCovidStatus = status => {
+    const errorMessage = document.getElementById('errorText');
+    errorMessage.innerText = '';
     const covidDetails = document.getElementById('covidDetails');
     const div = document.createElement('div');
     div.className = 'covidDetails';
@@ -24,8 +26,11 @@ const displayCovidStatus = status => {
         <p class="textSize text-success">${'<b>Recovered</b>: '+status.recovered}</p>
         <p class="textSize text-danger">${'<b>Deaths</b>: '+status.deaths}</p>
         <p class="textSize">${'<b>Elevation in Meters</b>: '+status.elevation_in_meters}</p>
-
     `
     covidDetails.appendChild(div);
+}
 
+const errorText = error => {
+    const errorMessage = document.getElementById('errorText');
+    errorMessage.innerText = error;
 }
