@@ -1,10 +1,6 @@
 const searchCountry = country => {
-    const countryInput = document.getElementById('countryInput').value;
+    let countryInput = document.getElementById('countryInput').value;
     const countryName = countryInput.charAt(0).toUpperCase() + countryInput.slice(1);
-
-    const covidDetailsDiv = document.createElement('div');
-    covidDetailsDiv.innerHTML='';
-    covidDetailsDiv.className = 'covidDetails';
     
     const mainUrl = `https://covid-api.mmediagroup.fr/v1/cases?country=${countryName}`;
     const statusDeathUrl = `https://covid-api.mmediagroup.fr/v1/history?country=${countryName}&status=deaths`;
@@ -41,12 +37,14 @@ const displayCovidStatus = (statusMain, statusDeath, statusConfirmed, statusReco
     const statusDeathObjValue = Object.values(statusDeathObj);
     const newDeath=statusDeathObjValue[0]-statusDeathObjValue[1];
 
+    document.getElementById('countryInput').value='';
+    const covidDetails = document.getElementById('covidDetails');
+    covidDetails.innerHTML='';
+
     const errorMessage = document.getElementById('errorText');
     errorMessage.innerText = '';
 
-    const covidDetails = document.getElementById('covidDetails');
     const covidDetailsDiv = document.createElement('div');
-    covidDetailsDiv.innerHTML='';
     covidDetailsDiv.className = 'covidDetails';
 
     covidDetailsDiv.innerHTML = `
@@ -71,4 +69,6 @@ const displayCovidStatus = (statusMain, statusDeath, statusConfirmed, statusReco
 const errorText = error => {
     const errorMessage = document.getElementById('errorText');
     errorMessage.innerText = error;
+    
+    
 }
