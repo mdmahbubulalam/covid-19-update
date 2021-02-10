@@ -23,7 +23,6 @@ const searchCountry = country => {
 }
 
 const displayCovidStatus = (statusMain, statusDeath, statusConfirmed, statusRecovered) => {
-    console.log(statusMain);
 
     const statusConfirmedObj =statusConfirmed.dates;
     const statusConfirmedObjValue = Object.values(statusConfirmedObj);
