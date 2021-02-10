@@ -1,6 +1,10 @@
 const searchCountry = country => {
     const countryInput = document.getElementById('countryInput').value;
     const countryName = countryInput.charAt(0).toUpperCase() + countryInput.slice(1);
+
+    const covidDetailsDiv = document.createElement('div');
+    covidDetailsDiv.innerHTML='';
+    covidDetailsDiv.className = 'covidDetails';
     
     const mainUrl = `https://covid-api.mmediagroup.fr/v1/cases?country=${countryName}`;
     const statusDeathUrl = `https://covid-api.mmediagroup.fr/v1/history?country=${countryName}&status=deaths`;
@@ -23,6 +27,7 @@ const searchCountry = country => {
 }
 
 const displayCovidStatus = (statusMain, statusDeath, statusConfirmed, statusRecovered) => {
+    console.log(statusMain);
 
     const statusConfirmedObj =statusConfirmed.dates;
     const statusConfirmedObjValue = Object.values(statusConfirmedObj);
@@ -60,7 +65,7 @@ const displayCovidStatus = (statusMain, statusDeath, statusConfirmed, statusReco
         <p class="textSize text-danger">${'<b>New Deaths</b>: '+newDeath}</p>
         <p class="textSize">${'<b>Elevation in Meters</b>: '+statusMain.elevation_in_meters}</p>
     `
-    covidDetails.appendChild(div);
+    covidDetails.appendChild(covidDetailsDiv);
 }
 
 const errorText = error => {
