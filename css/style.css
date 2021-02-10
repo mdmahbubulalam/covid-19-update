@@ -35,4 +35,8 @@ body {
     body {
         background-image: url(../image/image-small.jpg);
     }
+
+    .textSize {
+        font-size: 18px;
+    }
 }
