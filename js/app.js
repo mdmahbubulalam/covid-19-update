@@ -1,7 +1,7 @@
 const searchCountry = country => {
     let countryInput = document.getElementById('countryInput').value;
     const countryName = countryInput.charAt(0).toUpperCase() + countryInput.slice(1);
-    
+
     const mainUrl = `https://covid-api.mmediagroup.fr/v1/cases?country=${countryName}`;
     const statusDeathUrl = `https://covid-api.mmediagroup.fr/v1/history?country=${countryName}&status=deaths`;
     const statusConfirmedUrl = `https://covid-api.mmediagroup.fr/v1/history?country=${countryName}&status=confirmed`;
@@ -24,21 +24,21 @@ const searchCountry = country => {
 
 const displayCovidStatus = (statusMain, statusDeath, statusConfirmed, statusRecovered) => {
 
-    const statusConfirmedObj =statusConfirmed.dates;
+    const statusConfirmedObj = statusConfirmed.dates;
     const statusConfirmedObjValue = Object.values(statusConfirmedObj);
-    const newConfirmed=statusConfirmedObjValue[0]-statusConfirmedObjValue[1];
+    const newConfirmed = statusConfirmedObjValue[0] - statusConfirmedObjValue[1];
 
-    const statusRecoveredObj =statusRecovered.dates;
+    const statusRecoveredObj = statusRecovered.dates;
     const statusRecoveredObjValue = Object.values(statusRecoveredObj);
-    const newRecovered=statusRecoveredObjValue[0]-statusRecoveredObjValue[1];
+    const newRecovered = statusRecoveredObjValue[0] - statusRecoveredObjValue[1];
 
-    const statusDeathObj =statusDeath.dates;
+    const statusDeathObj = statusDeath.dates;
     const statusDeathObjValue = Object.values(statusDeathObj);
-    const newDeath=statusDeathObjValue[0]-statusDeathObjValue[1];
+    const newDeath = statusDeathObjValue[0] - statusDeathObjValue[1];
 
-    document.getElementById('countryInput').value='';
+    document.getElementById('countryInput').value = '';
     const covidDetails = document.getElementById('covidDetails');
-    covidDetails.innerHTML='';
+    covidDetails.innerHTML = '';
 
     const errorMessage = document.getElementById('errorText');
     errorMessage.innerText = '';
@@ -68,6 +68,4 @@ const displayCovidStatus = (statusMain, statusDeath, statusConfirmed, statusReco
 const errorText = error => {
     const errorMessage = document.getElementById('errorText');
     errorMessage.innerText = error;
-    
-    
 }
